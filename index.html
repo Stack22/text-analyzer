@@ -19,11 +19,11 @@
                     <textarea class="js-text" cols="60" rows="20" id="user-text" name="user-text" placeholder="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." required></textarea>
                 </div>
                 <div>
-                    <button type="submit">Analyze it!</button>
+                    <button id="sub-button" type="submit">Analyze it!</button>
                 </div>
             </form>
 
-            <dl class=" text-report">
+            <dl class="hidden text-report">
                 <dt>Word count</dt>
                 <dd id="js-word-count"></dd>
 
@@ -39,8 +39,7 @@
         </main>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.0.0.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
     <script src="app.js"></script>
-
 </body>
 </html>

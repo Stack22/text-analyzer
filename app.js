@@ -18,37 +18,36 @@
   funfunFunction... get sum of lengths / # of sentences
   return to -- "js-avg-sent-length"
 */
-var allWordsArray = [];
-var sentenceArray = [];
-var eachWordArray = [];
+
+
 
 // ------------------------------------------------------- \\
 function findAllWords(rawData) {
+  var porcWordsArray = [];
   console.log(rawData);
-  allWordsArray = rawData.split(" ");
-  for (i=0; i<allWordsArray.length; i++) {
-    allWordsArray[i].trim();
+  porcWordsArray = rawData.split(" ");
+  for (i=0; i<porcWordsArray.length; i++) {
+    porcWordsArray[i].trim();
   }
-  console.log(allWordsArray);
-  return allWordsArray;
+  console.log(porcWordsArray);
+  return porcWordsArray;
 };
 // ------------------------------------------------------- \\
 function findEachWord(targetArray) {
+  var retWordArray = [];
   for (var i=0; i < targetArray.length; i++) {
-    if (eachWordArray.includes(targetArray[i])) {
+    if (retWordArray.includes(targetArray[i])) {
       // do nothing, it's already there
       } else {
-        eachWordArray.push(targetArray[i]);
+        retWordArray.push(targetArray[i]);
       }
     }
-  console.log(eachWordArray);
-  return eachWordArray;
+  console.log(retWordArray);
+  return retWordArray;
 };
 // ------------------------------------------------------- \\
 function findAllSentences(rawData) {
-  sentenceArray = rawData.split("\n");
-  console.log(sentenceArray);
-  return sentenceArray;
+  return rawData.split("\n");
 };
 // ------------------------------------------------------- \\
 function getAvgCharCount(dataObject) {
@@ -61,12 +60,12 @@ function getAvgCharCount(dataObject) {
 };
 // ------------------------------------------------------- \\
 function analyzeText() {
-  $(":submit").click(function() {
-    event.stopPropagation();
-    $("dl").removeClass(".hidden");
-    findAllWords($(".js-text").val());
-    findAllSentences($(".js-text").val());
-    findEachWord(allWordsArray);
+  $("#sub-button").click(function(event) {
+    event.preventDefault();
+    $("dl").removeClass("hidden");
+    var allWordsArray = findAllWords($(".js-text").val());
+    var sentenceArray = findAllSentences($(".js-text").val());
+    var eachWordArray = findEachWord(allWordsArray);
 
     $("#js-word-count").append(allWordsArray.length);
     $("#js-uniq-words").append(eachWordArray.length);
@@ -76,4 +75,4 @@ function analyzeText() {
     });
 }
 
-analyzeText();
+$(analyzeText());
